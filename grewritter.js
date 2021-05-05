@@ -20,7 +20,10 @@ app.get('/', function(req, res, next){
 
 // url encode params
 let encoder = (req, res, next, param, name) => {
-    req.params[name] = encodeURIComponent(param);
+    param = encodeURIComponent(param);
+    // windbg encodes again when making a request, converting %2F into %252F, so we need to undo it
+    param = param.split('%252F').join('%2F');
+    req.params[name] = param;
     next();
 };
 app.param('token' , (req, res, next, param) => { encoder(req, res, next, param, 'token' ) } );
