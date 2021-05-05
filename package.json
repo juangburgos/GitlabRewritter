@@ -1,0 +1,10 @@
+{
+  "name": "grewritter",
+  "version": "1.0.0",
+  "description": "rewrite gitlab raw file access without query strings",
+  "author": "juangburgos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1"
+  }
+}
