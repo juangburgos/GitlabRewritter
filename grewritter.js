@@ -1,6 +1,5 @@
 // dependencies
 const express    = require('express');
-const bodyParser = require('body-parser');
 const https      = require('https');
 let   app        = express();
 
@@ -10,7 +9,7 @@ let grewritter_port = process.env.GREWRITTER_PORT || 3000;
 grewritter_port     = parseInt(grewritter_port);
 
 // setup the body parser
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 // handle root
 app.get('/', function(req, res, next){
