@@ -38,7 +38,11 @@ app.param('file'  , (req, res, next, param) => { encoder(req, res, next, param, 
 
 // request for raw file
 let requestRaw = (gitlab_req_url, res) => {
-    let gitlab_req = client.get(gitlab_req_url, (gitlab_res) => { 
+    let gitlab_req = client.get(gitlab_req_url, (gitlab_res) => {
+        if (gitlab_res.statusCode == 404) {
+            res.sendStatus(gitlab_res.statusCode);
+            return;
+        }
         let data = '';
         gitlab_res.on('data', (chunk) => {
           data += chunk;
