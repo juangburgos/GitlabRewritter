@@ -64,6 +64,11 @@ app.get('/token/:token/proj/:proj/commit/:commit/file/:file', function(req, res)
     requestRaw(gitlab_req_url, res)
 });
 
+// handle rest
+app.get('*', function(req, res, next){
+    res.sendStatus(404);
+});
+
 // listen
 console.log(`Listening on: ${grewritter_port}`);
 console.log(`Redirecting to: ${gitlab_url}`);
