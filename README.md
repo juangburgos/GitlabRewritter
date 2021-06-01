@@ -36,6 +36,20 @@ Where:
 
 **IMPORTANT** : the `project_name`, `file_path` and `file_name` must be percent encoded, i.e. all forward slashes `/` must be converted to `%2F`.
 
+An alternative API is requesting:
+
+```
+https://example.com/token/${gitlab_pa_token}/proj/${project_name}/commit/${commit_hash}/file/${file_name}
+```
+
+Is rewritten as:
+
+```
+https://gitlab.com/api/v4/projects/${project_name}/repository/files/${file_name}/raw?ref=${commit_hash}&private_token=${gitlab_pa_token}
+```
+
+In this case `file_name` must include the also the encoded relative directory of the target file.
+
 ## Run with Node
 
 ```bash
